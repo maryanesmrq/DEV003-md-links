@@ -75,14 +75,40 @@ const containLinks = (fileContent, filePath) => {
       file: filePath,
     }
   })
-console.log(linkData)
+return linkData
 }
 getContent('./files/prueba2.md').then((result) => {
   containLinks(result, './files/prueba2.md')
 });
 
-//fn para extraer links
-
+//fn para extraer links con fetch
+const validateLinks = (linkDataArray) =>{
+  let mappingData = linkDataArray.map(objects =>{
+    return fetch(objects.href)
+    .then((response) =>{
+      return{
+        href: objects.href,
+        text: objects.text,
+        file: objects.file,
+        status: response.status,
+        ok: response.statusText,
+      }
+    })
+    .catch((error) => {
+      return {
+        href: objects.href,
+        text: objects.text,
+        file: objects.file,
+        status: error.message,
+        ok: 'fail',
+      }
+    });
+  })
+  return Promise.all(mappingData)
+}
+getContent('./files/prueba2.md').then((result) => {
+  validateLinks(containLinks(result, './files/prueba2.md')).then(console.log)
+})
 //validar ruta
 
 module.exports = {
@@ -91,7 +117,8 @@ module.exports = {
     turnToAbsolute,
     isItMd,
     getContent,
-    containLinks
+    containLinks,
+    validateLinks
 };
 
 

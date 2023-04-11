@@ -6,3 +6,4 @@ console.log(turnToAbsolute);
 console.log(isItMd);
 console.log(getContent);
 console.log(containLinks);
+
