@@ -29,3 +29,6 @@ const mdLinks = (path,options) => {
 
 mdLinks('./files/prueba2.md', {validate: true}).then(console.log).catch(console.log)
 
+module.exports = {
+   mdLinks
+};

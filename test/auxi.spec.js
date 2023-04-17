@@ -9,11 +9,11 @@ it('si ruta no existe da "false" ', () => {
 });
 });
 
-// describe('es una ruta absoluta', () => {
-// it('retorna la ruta si esta es absoluta', () => {
-//     expect(functionsAux.absOrRel('.\files\prueba2.md')).toEqual('C:\Users\Laboratoria\Desktop\Laboratoria\DEV003-md-links\files\prueba2.md')
-// });
-// it('retorna una ruta absoluta, aunque te pase una relativa', () => {
-//     expect(functionsAux.isAbsOrRel('\prueba.md')).toEqual('C:\Users\Vinka Peña\Desktop\ProyectoVinka\MD Links\DEV003-md-links\files\prueba.md')
-// });
+describe('es una ruta absoluta', () => {
+it('retorna la ruta si esta es absoluta', () => {
+expect(functionsAux.absOrRel('C:\\Users\\Laboratoria\\Desktop\\Laboratoria\\DEV003-md-links\\files\\prueba2.md')).toEqual('C:\\Users\\Laboratoria\\Desktop\\Laboratoria\\DEV003-md-links\\files\\prueba2.md')
+});
+it('retorna una ruta absoluta, aunque te pase una relativa', () => {
+    expect(functionsAux.absOrRel('files\\prueba2.md')).toEqual('C:\\Users\\Laboratoria\\Desktop\\Laboratoria\\DEV003-md-links\\files\\prueba2.md')
+});
 });
